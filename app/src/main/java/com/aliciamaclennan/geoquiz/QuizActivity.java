@@ -2,6 +2,7 @@ package com.aliciamaclennan.geoquiz;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -29,12 +30,6 @@ public class QuizActivity extends AppCompatActivity {
         int question = mQuestionBank[mCurrentIndex].getTextResId();
         mQuestionTextView.setText(question);
 
-//        mNextButton = (Button) findViewById(R.id.next_button);
-//        mNextButton.setOnClickListener(new View.onClickListener(){
-//            @Override
-//            public void onClick(View v)
-//        });
-
         mTrueButton = (Button) findViewById(R.id.true_button);
         mTrueButton.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -52,6 +47,17 @@ public class QuizActivity extends AppCompatActivity {
                 Toast.makeText(QuizActivity.this,
                         R.string.incorrect_toast,
                         Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+        mNextButton = (Button) findViewById(R.id.next_button);
+        mNextButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                mCurrentIndex = (mCurrentIndex +1) % mQuestionBank.length;
+                int question = mQuestionBank[mCurrentIndex].getTextResId();
+                mQuestionTextView.setText(question);
 
             }
         });
