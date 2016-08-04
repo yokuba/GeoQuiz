@@ -6,7 +6,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.view.View.OnClickListener;
+import android.widget.Toast;
 
 public class QuizActivity extends AppCompatActivity {
     private Button mTrueButton;
@@ -20,7 +20,9 @@ public class QuizActivity extends AppCompatActivity {
         mTrueButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-
+                Toast.makeText(QuizActivity.this,
+                        R.string.correct_toast,
+                        Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -28,21 +30,24 @@ public class QuizActivity extends AppCompatActivity {
         mFalseButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
+                Toast.makeText(QuizActivity.this,
+                        R.string.incorrect_toast,
+                        Toast.LENGTH_SHORT).show();
 
             }
         });
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.quiz, menu);
+        //getMenuInflater().inflate(R.menu.quiz, menu);
         return true;
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
-        }
+       // if (id == R.id.action_settings) {
+        //    return true;
+        //}
         return super.onOptionsItemSelected(item);
     }
 }
