@@ -3,4 +3,5 @@
     <string name="question_text">Istanbul was once Constantinople.</string>
     <string name="true_button">True</string>
     <string name="false_button">False</string>
+    <string name="action_settings">Settings</string>
 </resources>
