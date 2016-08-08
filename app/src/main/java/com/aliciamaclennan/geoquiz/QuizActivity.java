@@ -3,8 +3,6 @@ package com.aliciamaclennan.geoquiz;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -47,12 +45,12 @@ public class QuizActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.d(TAG,"OnCreate(Bundle) called");
+        Log.d(TAG, "OnCreate(Bundle) called");
         setContentView(R.layout.activity_quiz);
         mQuestionTextView = (TextView) findViewById(R.id.question_text_view);
 
         mTrueButton = (Button) findViewById(R.id.true_button);
-        mTrueButton.setOnClickListener(new View.OnClickListener(){
+        mTrueButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 checkAnswer(true);
@@ -60,7 +58,7 @@ public class QuizActivity extends AppCompatActivity {
         });
 
         mFalseButton = (Button) findViewById(R.id.false_button);
-        mFalseButton.setOnClickListener(new View.OnClickListener(){
+        mFalseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 checkAnswer(false);
@@ -68,16 +66,16 @@ public class QuizActivity extends AppCompatActivity {
         });
 
         mNextButton = (ImageButton) findViewById(R.id.next_button);
-        mNextButton.setOnClickListener(new View.OnClickListener(){
+        mNextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mCurrentIndex = (mCurrentIndex +1) % mQuestionBank.length;
+                mCurrentIndex = (mCurrentIndex + 1) % mQuestionBank.length;
                 updateQuestion();
             }
         });
 
         mPrevButton = (ImageButton) findViewById(R.id.previous_button);
-        mPrevButton.setOnClickListener(new View.OnClickListener(){
+        mPrevButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (mCurrentIndex == 0) {
@@ -90,15 +88,15 @@ public class QuizActivity extends AppCompatActivity {
         });
 
         mTextQuestion = (TextView) findViewById(R.id.question_text_view);
-        mTextQuestion.setOnClickListener(new View.OnClickListener(){
+        mTextQuestion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mCurrentIndex = (mCurrentIndex +1) % mQuestionBank.length;
+                mCurrentIndex = (mCurrentIndex + 1) % mQuestionBank.length;
                 updateQuestion();
             }
         });
 
-        if (savedInstanceState != null){
+        if (savedInstanceState != null) {
             mCurrentIndex = savedInstanceState.getInt(KEY_INDEX, 0);
         }
         updateQuestion();
@@ -110,43 +108,5 @@ public class QuizActivity extends AppCompatActivity {
         Log.i(TAG, "onSaveInstanceState");
         savedInstanceState.putInt(KEY_INDEX, mCurrentIndex);
     }
-
-    @Override
-    public void onStart(){
-        super.onStart();
-        Log.d(TAG,"onStart() called");
-    }
-    @Override
-    public void onPause(){
-        super.onPause();
-        Log.d(TAG,"onPause() called");
-    }
-    @Override
-    public void onResume(){
-        super.onResume();
-        Log.d(TAG,"onResume() called");
-    }
-    @Override
-    public void onStop(){
-        super.onStop();
-        Log.d(TAG,"onStop() called");
-    }
-    @Override
-    public void onDestroy(){
-        super.onDestroy();
-        Log.d(TAG,"onDestroy() called");
-    }
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        //getMenuInflater().inflate(R.menu.quiz, menu);
-        return true;
-    }
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-       // if (id == R.id.action_settings) {
-        //    return true;
-        //}
-        return super.onOptionsItemSelected(item);
-    }
+    
 }
