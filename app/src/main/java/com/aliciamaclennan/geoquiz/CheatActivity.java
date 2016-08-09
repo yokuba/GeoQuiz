@@ -13,6 +13,7 @@ public class CheatActivity extends AppCompatActivity {
     public static final String EXTRA_ANSWER_IS_TRUE = "com.aliciamaclennan.geoquiz.answer_is_true";
     public static final String EXTRA_ANSWER_SHOWN = "com.aliciamaclennan.geoquiz.answer_shown";
     private boolean mAnswerIsTrue;
+    private boolean saveResult = false;
     private TextView mAnswerTextView;
     private Button mShowAnswer;
     public static Intent newIntent(Context packageContext, boolean answerIsTrue) {
@@ -40,13 +41,26 @@ public class CheatActivity extends AppCompatActivity {
                     mAnswerTextView.setText(R.string.false_button);
                 }
                 setAnswerShownResult(true);
+                saveResult = true;
             }
         });
+        if (savedInstanceState != null) {
+            saveResult = savedInstanceState.getBoolean(EXTRA_ANSWER_SHOWN, false);
+            setAnswerShownResult(saveResult);
+        }
     }
 
     private void setAnswerShownResult(boolean isAnswerShown) {
         Intent data = new Intent();
         data.putExtra(EXTRA_ANSWER_SHOWN, isAnswerShown);
         setResult(RESULT_OK, data);
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        super.onSaveInstanceState(savedInstanceState);
+        if (saveResult) {
+            savedInstanceState.putBoolean(EXTRA_ANSWER_SHOWN, saveResult);
+        }
     }
 }
