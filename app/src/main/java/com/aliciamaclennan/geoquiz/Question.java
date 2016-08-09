@@ -6,10 +6,12 @@ package com.aliciamaclennan.geoquiz;
 public class Question {
     private int mTextResId;
     private boolean mAnswerTrue;
+    private boolean mIsCheater;
 
-    public Question(int textResId, boolean AnswerTrue){
+    public Question(int textResId, boolean AnswerTrue, boolean isCheater){
         mTextResId = textResId;
         mAnswerTrue = AnswerTrue;
+        mIsCheater = isCheater;
     }
 
     public int getTextResId() {
@@ -27,4 +29,7 @@ public class Question {
     public void setAnswerTrue(boolean answerTrue) {
         mAnswerTrue = answerTrue;
     }
+
+    public boolean isCheatTrue() { return mIsCheater;}
+    public void setCheatTrue(boolean cheatTrue){mIsCheater = cheatTrue;}
 }
