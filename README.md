@@ -1,9 +1,13 @@
 # GeoQuiz
-Geography quiz application for Android devices
+Geography quiz application for Android devices. This is a work in progress from The Big Nerd Ranch Guide. In the future, I plan to add sqlite database functionality so that the user can select different quiz options and keep track of performance.
 
-Start the quiz:
+The basic UI allows the user to hit true or false, and feedback is given right away. Start the quiz:
 
 ![Main screen](https://github.com/yokuba/GeoQuiz/blob/master/imgs/main.png)
+
+Let's say the user enters the incorrect answer of 'false':
+
+![Enter incorrect answer](![Main screen](https://github.com/yokuba/GeoQuiz/blob/master/imgs/incorrect.png)
 
 If user touches the 'Cheat!' button, the user can still turn back...
 
