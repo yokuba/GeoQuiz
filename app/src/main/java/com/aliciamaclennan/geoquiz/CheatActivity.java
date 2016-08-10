@@ -4,6 +4,7 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -18,6 +19,7 @@ public class CheatActivity extends AppCompatActivity {
     private boolean mAnswerIsTrue;
     private boolean saveResult = false;
     private TextView mAnswerTextView;
+    private TextView mBuildView;
     private Button mShowAnswer;
     public static Intent newIntent(Context packageContext, boolean answerIsTrue) {
         Intent i = new Intent(packageContext, CheatActivity.class);
@@ -34,6 +36,7 @@ public class CheatActivity extends AppCompatActivity {
         setContentView(R.layout.activity_cheat);
         mAnswerIsTrue = getIntent().getBooleanExtra(EXTRA_ANSWER_IS_TRUE, false);
         mAnswerTextView = (TextView) findViewById(R.id.answer_text_view);
+        mBuildView = (TextView) findViewById(R.id.build_version_view);
         mShowAnswer = (Button) findViewById(R.id.show_answer_button);
         mShowAnswer.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,17 +49,16 @@ public class CheatActivity extends AppCompatActivity {
                 setAnswerShownResult(true);
                 saveResult = true;
 
-                int cx = mShowAnswer.getWidth() / 2;
-                int cy = mShowAnswer.getHeight() / 2;
-                float radius = mShowAnswer.getWidth();
-                Animator anim = null;
-                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
-                    anim = ViewAnimationUtils
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    int cx = mShowAnswer.getWidth() / 2;
+                    int cy = mShowAnswer.getHeight() / 2;
+                    float radius = mShowAnswer.getWidth();
+                    Animator anim = ViewAnimationUtils
                             .createCircularReveal(mShowAnswer, cx, cy, radius, 0);
 
                     anim.addListener(new AnimatorListenerAdapter() {
                         @Override
-                        public void onAnimationStart(Animator animation) {
+                        public void onAnimationEnd(Animator animation) {
                             super.onAnimationEnd(animation);
                             mAnswerTextView.setVisibility(View.VISIBLE);
                             mShowAnswer.setVisibility(View.INVISIBLE);
@@ -68,9 +70,11 @@ public class CheatActivity extends AppCompatActivity {
                     mShowAnswer.setVisibility(View.INVISIBLE);
                 }
             }
-
-            ;
         });
+        if (mBuildView != null) {
+            String thing = "API level " + Build.VERSION.SDK_INT ;
+            mBuildView.setText(thing);
+        }
     }
     private void setAnswerShownResult(boolean isAnswerShown) {
         Intent data = new Intent();
