@@ -1,20 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="center"
-    android:orientation="vertical"
-    tools:context="com.aliciamaclennan.geoquiz.QuizActivity">
+    android:layout_height="match_parent">
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="24dp"
         android:textSize="@dimen/text_size"
-        android:id="@+id/question_text_view"/>
+        android:padding="24dp"
+        android:id="@+id/question_text_view"
+        android:layout_gravity="center|top"/>
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical|center_horizontal"
         android:orientation="horizontal">
         <Button
             android:id="@+id/true_button"
@@ -31,11 +29,13 @@
         android:id="@+id/cheat_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text='@string/cheat_button'/>
+        android:text='@string/cheat_button'
+        android:layout_gravity="bottom|center"/>
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_gravity="bottom|right">
         <ImageButton
             android:id="@+id/previous_button"
             android:layout_width="wrap_content"
@@ -49,4 +49,4 @@
             android:src="@drawable/arrow_right"
             android:contentDescription="next_button" />
     </LinearLayout>
-</LinearLayout>
+</FrameLayout>
