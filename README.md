@@ -7,7 +7,7 @@ The basic UI allows the user to hit true or false, and feedback is given right a
 
 Let's say the user enters the incorrect answer of 'false':
 
-![Incorrect answer](![Main screen](https://github.com/yokuba/GeoQuiz/blob/master/imgs/incorrect.png)
+![Incorrect answer](https://github.com/yokuba/GeoQuiz/blob/master/imgs/incorrect.png)
 
 If user touches the 'Cheat!' button, the user can still turn back...
 
