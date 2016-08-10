@@ -71,10 +71,8 @@ public class CheatActivity extends AppCompatActivity {
                 }
             }
         });
-        if (mBuildView != null) {
-            String thing = "API level " + Build.VERSION.SDK_INT ;
-            mBuildView.setText(thing);
-        }
+        String version_number = "API level " + Build.VERSION.SDK_INT ;
+        mBuildView.setText(version_number);
     }
     private void setAnswerShownResult(boolean isAnswerShown) {
         Intent data = new Intent();
