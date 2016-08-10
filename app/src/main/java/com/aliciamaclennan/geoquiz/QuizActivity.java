@@ -79,6 +79,7 @@ public class QuizActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 mCurrentIndex = (mCurrentIndex + 1) % mQuestionBank.length;
+                mIsCheater = false;
                 updateQuestion();
             }
         });
@@ -134,8 +135,7 @@ public class QuizActivity extends AppCompatActivity {
             if (data == null) {
                 return;
             }
-            mQuestionBank[mCurrentIndex].setCheatTrue(CheatActivity
-                    .wasAnswerShown(data));
+            mQuestionBank[mCurrentIndex].setCheatTrue(CheatActivity.wasAnswerShown(data));
         }
     }
 
